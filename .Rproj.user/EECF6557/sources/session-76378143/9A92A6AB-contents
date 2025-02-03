@@ -73,7 +73,6 @@ ggplot(
 
 ### Exercise 4
 ```{r Ex.4}
-
 nobel_living <- nobel_living %>%
   mutate(born_country_us = if_else(born_country == "USA", "USA", "Other")
   )
