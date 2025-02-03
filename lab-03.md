@@ -119,19 +119,36 @@ glimpse(nobel_living)
 
 # answer for Ex 1.1: we have 935 observations and 26 variables in this dataset; observations represented by rows and variables represented by collums.
 
-# answer for Ex 1.2: my nobel_living left with a data frame with 228 observations and 26 variables.
+# answer for Ex 1.2: my nobel_living left with a data frame with 228 observations and 27 variables.
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 1 here. Add code
-chunks as needed. Don’t forget to label your code chunk. Do not use
-spaces in code chunk labels.
+``` r
+nobel_living <- nobel_living %>%
+  mutate(country_us = if_else(country == "USA", "USA", "Other")
+  )
+
+nobel_living_science <- nobel_living %>%
+  filter(category %in% c("Physics", "Medicine", "Chemistry", "Economics"))
+```
 
 ### Exercise 3
 
-Remove this text, and add your answer for Exercise 1 here. Add code
-chunks as needed. Don’t forget to label your code chunk. Do not use
-spaces in code chunk labels.
+``` r
+## Create a faceted bar plot visualizing the relationship between the category of prize and whether the laureate was in the US when they won the nobel prize.
+
+library(ggplot2) 
+ggplot(
+  data = nobel_living_science,
+  mapping = aes (
+    x = country_us, fill = country_us)) + geom_bar() + coord_flip() + facet_wrap(vars(category))
+```
+
+![](lab-03_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+``` r
+# I found some useful examples on Source: R/facet-wrap.R. 
+```
 
 ### Exercise 4
 

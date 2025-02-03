@@ -1,0 +1,7 @@
+"0","nobel_living <- nobel_living %>%"
+"0","  mutate(country_us = if_else(country == ""USA"", ""USA"", ""Other"")"
+"0","  )"
+"0",""
+"0","nobel_living_science <- nobel_living %>%"
+"0","  filter(category %in% c(""Physics"", ""Medicine"", ""Chemistry"", ""Economics""))"
+"0",""

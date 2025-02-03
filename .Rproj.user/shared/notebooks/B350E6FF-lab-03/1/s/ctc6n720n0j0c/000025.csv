@@ -1,0 +1,8 @@
+"0",""
+"0","## Create a faceted bar plot visualizing the relationship between the category of prize and whether the laureate was in the US when they won the nobel prize."
+"0",""
+"0","library(ggplot2) "
+"0","ggplot("
+"0","  data = nobel_living_science,"
+"0","  mapping = aes ("
+"0","    x = country_us, fill = country_us)) + geom_bar() + coord_flip() + facet_wrap(vars(category))"
