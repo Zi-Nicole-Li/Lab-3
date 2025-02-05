@@ -73,11 +73,12 @@ ggplot(
 
 ### Exercise 4
 ```{r Ex.4}
-nobel_living <- nobel_living %>%
+
+nobel_living_science <- nobel_living %>%
   mutate(born_country_us = if_else(born_country == "USA", "USA", "Other")
   )
 
-ggplot(nobel_living_science, aes(x = born_country_us))+ geom_bar() 
+ggplot(nobel_living_science, aes(y = born_country_us))+ geom_bar() 
 
 # answer for Ex 4: based on the plot, more than 100 winners are born in the US; tho majority of living winner were born outside. 
 ```

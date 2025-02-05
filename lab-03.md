@@ -148,16 +148,75 @@ ggplot(
 
 ``` r
 # I found some useful examples on Source: R/facet-wrap.R. 
+# US do have lot of living nobel laureates, but this data also shows that most living nobel laureates were in places other than the US. 
+```
+
+``` r
+# I use this to check some error. 
 ```
 
 ### Exercise 4
 
-…
+``` r
+nobel_living_science <- nobel_living %>%
+  mutate(born_country_us = if_else(born_country == "USA", "USA", "Other")
+  )
+
+ggplot(nobel_living_science, aes(y = born_country_us))+ geom_bar() 
+```
+
+![](lab-03_files/figure-gfm/Ex.4-1.png)<!-- -->
+
+``` r
+# answer for Ex 4: based on the plot, more than 100 winners are born in the US; tho majority of living winner were born outside. 
+```
 
 ### Exercise 5
+
+``` r
+# Ex. 5
+# Add a second variable to your visualization from Exercise 3 based on whether the laureate was born in the US or not. 
+ggplot(
+  data = nobel_living_science,
+  mapping = aes (
+    x = country_us, fill = born_country_us)) + geom_bar() + coord_flip() + facet_wrap(vars(category))
+```
+
+![](lab-03_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+``` r
+# answer for Ex.5: the data do not appear to support Buzzfeed’s claim; it seems like most living laureate won their prizes outside the us, and some us living laureate were born outside. 
+```
 
 …
 
 ### Exercise 6
+
+``` r
+# In a single pipeline, filter for laureates who won their prize in the US, but were born outside of the US, and then create a frequency table
+
+nobel_immigrants <- nobel %>%
+  filter(gender != "org") %>% 
+  filter(country == "USA") %>%
+  filter(born_country != "USA")
+
+nobel_immigrants %>%
+  count(born_country, sort = TRUE)
+```
+
+    ## # A tibble: 37 × 2
+    ##    born_country       n
+    ##    <chr>          <int>
+    ##  1 United Kingdom    15
+    ##  2 Canada            12
+    ##  3 Germany           10
+    ##  4 China              6
+    ##  5 Poland             6
+    ##  6 France             5
+    ##  7 Italy              5
+    ##  8 Japan              5
+    ##  9 Austria            4
+    ## 10 Hungary            4
+    ## # ℹ 27 more rows
 
 …

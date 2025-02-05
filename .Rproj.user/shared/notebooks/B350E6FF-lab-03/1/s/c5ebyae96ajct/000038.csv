@@ -1,0 +1,6 @@
+"0",""
+"0","nobel_living_science <- nobel_living %>%"
+"0","  mutate(born_country_us = if_else(born_country == ""USA"", ""USA"", ""Other"")"
+"0","  )"
+"0",""
+"0","ggplot(nobel_living_science, aes(y = born_country_us))+ geom_bar() "

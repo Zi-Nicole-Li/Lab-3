@@ -1,0 +1,22 @@
+"0","# Ex. 5"
+"0","# Add a second variable to your visualization from Exercise 3 based on whether the laureate was born in the US or not. "
+"0","ggplot("
+"0","  data = nobel_living_science,"
+"0","  mapping = aes ("
+"0","    x = country_us, fill = born_country_us)) + geom_bar() + coord_flip() + facet_wrap(vars(category))"
+"1","[1m[33mError[39m in `geom_bar()`:[22m
+[38;5;232m[33m![38;5;232m Problem while computing aesthetics.
+[36mℹ[38;5;232m Error occurred in the 1st layer.[39m
+[1mCaused by error:[22m
+[33m![39m object 'born_country_us' not found
+Backtrace:
+[90m  1. [39m[1mbase[22m (local) `<fn>`(x)
+[90m  2. [39mggplot2:::print.ggplot(x)
+[90m  4. [39mggplot2:::ggplot_build.ggplot(x)
+[90m  5. [39mggplot2:::by_layer(...)
+[90m 12. [39mggplot2 (local) f(l = layers[[i]], d = data[[i]])
+[90m 13. [39ml$compute_aesthetics(d, plot)
+[90m 14. [39mggplot2 (local) compute_aesthetics(..., self = self)
+[90m 15. [39m[1mbase[22m::lapply(aesthetics, eval_tidy, data = data, env = env)
+[90m 16. [39m[1mrlang[22m (local) FUN(X[[i]], ...)
+"
